@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tire Fill Calculator</title>
+  <link rel="stylesheet" href="tire-fill-calculator.css" />
+</head>
+<body>
+  <main class="page">
+    <section class="calculator">
+      <header class="calculator__header">
+        <div>
+          <p class="eyebrow">CO2 Tire Fill</p>
+          <h1>Tire Fill Calculator</h1>
+          <p class="lede">
+            Estimate tire volume and see how many fills your CO2 supply can provide.
+            The calculation models the tire as a simple cylinder and uses ideal-gas assumptions
+            for CO2 usage.
+          </p>
+        </div>
+        <div class="tabs" role="tablist" aria-label="Unit system">
+          <button class="tab tab--active" role="tab" aria-selected="true" aria-controls="imperial-panel" id="imperial-tab">Imperial</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="metric-panel" id="metric-tab">Metric</button>
+        </div>
+      </header>
+
+      <section class="panel panel--active" id="imperial-panel" role="tabpanel" aria-labelledby="imperial-tab">
+        <form class="form" id="imperial-form">
+          <div class="field-grid">
+            <label class="field">
+              <span>Overall tire diameter (in)</span>
+              <input type="number" name="tireDiameter" step="0.1" min="0" required placeholder="e.g. 35" />
+            </label>
+            <label class="field">
+              <span>Tire width (in)</span>
+              <input type="number" name="tireWidth" step="0.1" min="0" required placeholder="e.g. 12.5" />
+            </label>
+            <label class="field">
+              <span>Wheel diameter (in)</span>
+              <input type="number" name="wheelDiameter" step="0.1" min="0" required placeholder="e.g. 17" />
+            </label>
+            <label class="field">
+              <span>Starting pressure (PSI)</span>
+              <input type="number" name="startPsi" step="0.1" min="0" required value="10" />
+            </label>
+            <label class="field">
+              <span>Target pressure (PSI)</span>
+              <input type="number" name="targetPsi" step="0.1" min="0" required value="35" />
+            </label>
+            <label class="field">
+              <span>CO2 on hand (lbs)</span>
+              <input type="number" name="co2Lbs" step="0.1" min="0" required value="10" />
+            </label>
+          </div>
+          <div class="form__actions">
+            <button type="submit" class="primary">Calculate</button>
+          </div>
+        </form>
+        <div class="results" id="imperial-results"></div>
+      </section>
+
+      <section class="panel" id="metric-panel" role="tabpanel" aria-labelledby="metric-tab">
+        <form class="form" id="metric-form">
+          <div class="field-grid">
+            <label class="field">
+              <span>Tire width (mm)</span>
+              <input type="number" name="tireWidthMm" step="1" min="0" required placeholder="e.g. 285" />
+            </label>
+            <label class="field">
+              <span>Aspect ratio (%)</span>
+              <input type="number" name="aspectRatio" step="1" min="0" required placeholder="e.g. 70" />
+            </label>
+            <label class="field">
+              <span>Wheel diameter (in)</span>
+              <input type="number" name="wheelDiameter" step="0.1" min="0" required placeholder="e.g. 17" />
+            </label>
+            <label class="field">
+              <span>Starting pressure (kPa)</span>
+              <input type="number" name="startKpa" step="1" min="0" required value="70" />
+            </label>
+            <label class="field">
+              <span>Target pressure (kPa)</span>
+              <input type="number" name="targetKpa" step="1" min="0" required value="240" />
+            </label>
+            <label class="field">
+              <span>CO2 on hand (lbs)</span>
+              <input type="number" name="co2Lbs" step="0.1" min="0" required value="10" />
+            </label>
+          </div>
+          <div class="form__actions">
+            <button type="submit" class="primary">Calculate</button>
+          </div>
+        </form>
+        <div class="results" id="metric-results"></div>
+      </section>
+
+      <footer class="disclaimer">
+        <p>
+          This calculator assumes a cylindrical tire profile and ideal-gas behavior for CO2.
+          Real-world results can vary with tire construction, temperature, and regulator performance.
+        </p>
+      </footer>
+    </section>
+  </main>
+
+  <script type="module" src="tire-fill-calculator.js"></script>
+</body>
+</html>
